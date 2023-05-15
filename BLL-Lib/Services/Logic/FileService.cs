@@ -15,7 +15,7 @@ namespace BLL.Services.Logic
 
         public FileService()
         {
-            _fileLocation = "C:/Users/lawre/source/repos/Crud-Generator/Generator/FileDrop";
+            _fileLocation = "D:/Development/Crud-Generator/Generator/FileDrop";
         }
 
         public async Task SaveFile(string assembly, string folder, string subFolder, string fileType, string fileName, string content)

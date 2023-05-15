@@ -1,8 +1,8 @@
 ﻿using BLL.Models;
 
-namespace BLL.Services.Interface
+namespace BLL.Services.Logic
 {
-    public interface IModelBuilderService
+    public interface IStoredProcBuilderService
     {
         Task BuildAsync(string tableName, List<ColumnModel> columnModels);
     }

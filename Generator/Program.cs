@@ -21,14 +21,22 @@ namespace Generator
             IModelBuilderService modelBuilderService = new ModelBuilderService(fileService);
             ISqlAccessBuilderService sqlAccessBuilderService = new SqlAccessBuilderService(fileService);
             ITableTypeBuilderService tableTypeBuilderService = new TableTypeBuilderService(fileService);
+            IStoredProcBuilderService storedProcBuilderService = new StoredProcBuilderService(fileService);
+            IRepositoryBuilderService repositoryBuilderService = new RepositoryBuilderService(fileService);
 
             await sqlAccessBuilderService.BuildDapperConnectorAsync("BLL", "Data");
 
             foreach (TableModel data in sqlSchemaService.GetTableProperties())
             {
-                await modelBuilderService.BuildModelsAsync(data.TableName ?? string.Empty, data.Columns);
+                await modelBuilderService.BuildAsync(data.TableName ?? string.Empty, data.Columns);
                 //Fix script Styling.
-                await tableTypeBuilderService.BuildUserDefinedTypesAsync(data.TableName ?? string.Empty, data.Columns);
+                await tableTypeBuilderService.BuildAsync(data.TableName ?? string.Empty, data.Columns);
+                await storedProcBuilderService.BuildAsync(data.TableName ?? string.Empty, data.Columns);
+
+
+                IAPIBuilderService apiBuilderService = new APIBuilderService(fileService, data.TableName ?? string.Empty);
+                await apiBuilderService.BuildAsync(data.Columns);
+                await repositoryBuilderService.BuildAsync(data.TableName ?? string.Empty, data.Columns);
             }
 
             Console.WriteLine("Please press any key to exit...");

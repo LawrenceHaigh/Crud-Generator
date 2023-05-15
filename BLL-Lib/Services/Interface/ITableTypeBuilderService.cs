@@ -4,6 +4,6 @@ namespace BLL.Services.Interface
 {
     public interface ITableTypeBuilderService
     {
-        Task BuildUserDefinedTypesAsync(string tableName, List<ColumnModel> columnModels);
+        Task BuildAsync(string tableName, List<ColumnModel> columnModels);
     }
 }

@@ -2,7 +2,7 @@
 
 namespace BLL.Services.Interface
 {
-    public interface IModelBuilderService
+    public interface IRepositoryBuilderService
     {
         Task BuildAsync(string tableName, List<ColumnModel> columnModels);
     }

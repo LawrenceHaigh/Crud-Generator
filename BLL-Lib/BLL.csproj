@@ -10,6 +10,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.5.0" />
     <PackageReference Include="Microsoft.SqlServer.Management.SqlParser" Version="170.7.0" />
+    <PackageReference Include="Pluralize.NET.Core" Version="1.0.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
   </ItemGroup>
 
